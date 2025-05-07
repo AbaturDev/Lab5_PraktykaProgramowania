@@ -19,7 +19,7 @@ jobs:
     - name: Test with Pytest
       run: |
         pytest
-      - name: Lint with Pylint
+    - name: Lint with Pylint
       run: |
         pylint ./src/utils.py
     - name: Format with Black
