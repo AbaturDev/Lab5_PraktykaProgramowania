@@ -32,16 +32,19 @@ def test_divide(a, b, expected):
     assert result == expected
 
 
-@pytest.mark.parametrize("number, expected", [    (0, "0b0"),(1, "0b1"),(2, "0b10"),(100, "0b1100100")])
+@pytest.mark.parametrize(
+    "number, expected", [(0, "0b0"), (1, "0b1"), (2, "0b10"), (100, "0b1100100")]
+)
 def test_convert_to_binary(number, expected):
     assert utils.convert_to_binary(number) == expected
+
 
 @pytest.mark.parametrize("number", [-1, 101, 1000])
 def test_convert_to_binary_out_of_range(number):
     with pytest.raises(ValueError, match="Number must be between 0 and 100."):
         utils.convert_to_binary(number)
 
-    
+
 @pytest.mark.parametrize("number", [1.5, 0.1, 99.9])
 def test_convert_to_binary_not_integer(number):
     with pytest.raises(TypeError, match="Number must be an integer."):
